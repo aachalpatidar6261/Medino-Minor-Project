@@ -1,0 +1,46 @@
+{% extends 'header.html' %}
+{% load static %} <!-- it is load static folder on html -->
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+</head>
+<body>
+   
+    <section class="patient-area section-padding">
+        <div class="container">            
+            <div class="row">                
+                <div class="col-lg-5 offset-lg-3 align-self-center">
+                    <div class="appointment-form text-center mt-4 mt-lg-0">
+                        <h3 class="mb-5">appointment now</h3>
+                        {% if msg %}
+                            <b style="color: blanchedalmond;">{{msg}}</b>
+                        {% endif %}
+                        <form action="{%url 'take-appointment'%}" method="post" name="take">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" placeholder="Your Name" name="name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Your Email" name="email"> 
+                            </div>
+                            <div class="form-group">
+                                <input type="datetime-local" min="2014-07-06" placeholder="Date" name="date">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="subject" cols="2" rows="2"  placeholder="Enter Subject"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="appointment" value="Appointment">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
+{%endblock%}
